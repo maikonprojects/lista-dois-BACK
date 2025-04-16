@@ -1,22 +1,29 @@
 package org.example;
 
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Exerc42 {
     public static void main(String[] args) {
-        Random numSorteAx = new Random();
+        Random random = new Random();
 
-        Integer numSorteado = numSorteAx.nextInt(60);
+        System.out.println("40 Grupos de 3 números sorteados de 0 a 59: ");
 
-        Integer contadorDeTentativas = 0;
+        for (int i = 1; i <= 40; i++) {
+            Set<Integer> grupo = new HashSet<>();
 
-        for (int i = 0; i <= 40 ; i++) {
-           if (numSorteado > 0 && numSorteado <= 59){
-               System.out.println(numSorteado);
-           }
+
+            while (grupo.size() < 3) {
+                int numero = random.nextInt(60);
+                grupo.add(numero);
+            }
+
+
+            List<Integer> numerosOrdenados = new ArrayList<>(grupo);
+            Collections.sort(numerosOrdenados);
+
+            System.out.printf("Grupo %02d: %s\n", i, numerosOrdenados);
+
+
         }
-
-
     }
 }
